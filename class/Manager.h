@@ -16,7 +16,7 @@ public:
 	void setID(int id) {
 		this->id = id;
 	}
-	void setW(int w) {
-		this->w = w;
+	void setNumWorkers(int num_workers) {
+		this->num_workers = num_workers;
 	}
 };
