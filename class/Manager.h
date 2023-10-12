@@ -18,5 +18,12 @@ public:
 	}
 	void setNumWorkers(int num_workers) {
 		this->num_workers = num_workers;
+		for (int num_workers = 0; num_workers < this->num_workers; num_workers++) {
+			worker.setNameWorker(num_workers + 1);
+			workers.push_back(worker);
+		}
+	}
+	void setBossCommand(int boss_command) {
+
 	}
 };

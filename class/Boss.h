@@ -12,6 +12,11 @@ class Boss {
 public:
 	void setTeam(int team) {
 		this->team = team;
+		for (int num_team = 0; num_team < this->team; num_team++) {
+			manager.setID(num_team + 1);
+			manager.setManagerName(num_team + 1);
+			managers.push_back(manager);
+		}
 	}
 	void setNumWorkers(int num_workers) {
 		manager.setNumWorkers(num_workers);

@@ -4,7 +4,7 @@
 
 class Worker{
 	std::string worker_name = " ";
-	char task = 'N';
+	char task;
 public:
 	void setNameWorker(int num) {
 		worker_name = "worker " + num;
