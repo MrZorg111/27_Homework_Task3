@@ -2,6 +2,7 @@
 #include "Boss.h"
 
 int main() {
+	setlocale(LC_ALL, "rus");
 	int team, num_workers, boss_command;
 	Boss* boss = new Boss();
 	

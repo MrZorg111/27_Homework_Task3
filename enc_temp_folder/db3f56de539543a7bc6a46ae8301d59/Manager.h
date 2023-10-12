@@ -28,7 +28,7 @@ public:
 	}
 	void setBossCommand(int boss_command) {
 		std::srand(boss_command + id);
-		total_task = rand() % (workers.size() + 1); 
+		total_task = rand() % workers.size() + 1;
  		for (int worker_com = 0; worker_com < total_task; worker_com++) {
 			workers[worker_com].setTask(gen_rand_task());
 		}

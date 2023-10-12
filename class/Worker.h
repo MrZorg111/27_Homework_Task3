@@ -2,7 +2,7 @@
 #include <string>
 
 
-class Worker{
+class Worker {
 	std::string worker_name = " ";
 	char task;
 public:
@@ -12,4 +12,4 @@ public:
 	void setTask(char task) {
 		this->task = task;
 	}
-}
+};

@@ -23,5 +23,8 @@ public:
 	}
 	void setBossCommand(int boss_command) {
 		this->boss_command = boss_command;
+		for (int manager_command = 0; manager_command < managers.size(); manager_command++) {
+			managers[manager_command].setBossCommand(this->boss_command);
+		}
 	}
 };

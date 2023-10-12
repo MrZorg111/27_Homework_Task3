@@ -1,6 +1,7 @@
 #pragma once
+#include <iostream>
 #include <ctime>
-//Генератов заданий
+//Генератор заданий
 
 char gen_rand_task() {
 	std::srand(time(nullptr));
