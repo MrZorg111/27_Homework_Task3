@@ -8,7 +8,7 @@ class Manager {
 	std::vector<Worker> workers;
 	std::string manager_name;
 	int id;
-	int num_workers; // „исло рабочих в команде, придумать переменную
+	int num_workers; 
 public:
 	void setManagerName(int manager_name) {
 		this->manager_name = "manager " + manager_name;
