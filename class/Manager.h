@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <vector>
 #include <ctime>
@@ -14,7 +15,7 @@ class Manager {
 	int total_task;
 public:
 	void setManagerName(int manager_name) {
-		this->manager_name = "manager " + manager_name;
+		this->manager_name = "Manager " + manager_name;
 	}
 	void setID(int id) {
 		this->id = id;
@@ -27,10 +28,22 @@ public:
 		}
 	}
 	void setBossCommand(int boss_command) {
+		
 		std::srand(boss_command + id);
-		total_task = rand() % (workers.size() + 1); 
- 		for (int worker_com = 0; worker_com < total_task; worker_com++) {
+		total_task = rand() % (workers.size() + 1) + 1; 
+		std::cout << workers.size() << std::endl;
+ 		for (int worker_com = 0; worker_com < 1; worker_com++) {
+			std::cout << "Команда менеджера " << manager_name << "получила задание от босса!" << std::endl;
 			workers[worker_com].setTask(gen_rand_task());
 		}
 	}
+	void getListsWorkers() {
+		for (int w = 0; w < workers.size(); w++) {
+			std::cout << workers[w].getNameWorker() << std::endl;
+		}
+	}
+	std::string getNameManager() {
+		return manager_name;
+	}
+
 };

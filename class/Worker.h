@@ -12,4 +12,7 @@ public:
 	void setTask(char task) {
 		this->task = task;
 	}
+	std::string getNameWorker() {
+		return worker_name;
+	}
 };

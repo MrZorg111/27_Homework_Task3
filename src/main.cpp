@@ -14,7 +14,8 @@ int main() {
 	boss->setNumWorkers(num_workers);
 	std::cout << "Уважаемый директор, какие будут указания? " << std::endl;
 	std::cin >> boss_command;
-	boss->setBossCommand(boss_command);
+	//boss->setBossCommand(boss_command);
+	boss->getListsManager();
 	return 0;
 
 }

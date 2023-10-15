@@ -27,4 +27,12 @@ public:
 			managers[manager_command].setBossCommand(this->boss_command);
 		}
 	}
+
+	void getListsManager() {
+		for (int m = 0; m < managers.size(); m++) {
+			std::cout << managers[m].getNameManager() << std::endl;
+			managers[m].getListsWorkers();
+			std::cout << std::endl;
+		}
+	}
 };
