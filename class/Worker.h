@@ -1,18 +1,19 @@
 #pragma once
 #include <string>
+#include "function.h"
 
 
 class Worker {
 	std::string worker_name = " ";
 	char task;
 public:
-	void setNameWorker(int num) {
-		worker_name = "worker " + num;
+	void setNameWorker() {
+		worker_name = generation_names();
 	}
 	void setTask(char task) {
 		this->task = task;
 	}
-	std::string getNameWorker() {
-		return worker_name;
+	char getTask() {
+		return task;
 	}
 };
