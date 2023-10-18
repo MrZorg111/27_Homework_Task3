@@ -12,7 +12,7 @@ class Manager {
 	std::string manager_name;
 	int id;
 	int num_workers; 
-	int total_task;
+	int max_tasks;
 public:
 	void setManagerName() {
 		this->manager_name = generation_names();
@@ -22,19 +22,31 @@ public:
 	}
 	void setNumWorkers(int num_workers) {
 		this->num_workers = num_workers;
+		this->max_tasks = num_workers;
 		for (int num_workers = 0; num_workers < this->num_workers; num_workers++) {
 			worker.setNameWorker();
 			workers.push_back(worker);
 		}
 	}
-	void setBossCommand(int boss_command) {
+	bool setBossCommand(int boss_command) {
 		std::srand(boss_command + id);
-		total_task = rand() % (workers.size() + 1) + 1; 
-		for (int worker_com = 0; worker_com < workers.size(); worker_com++) {
-			workers[worker_com].setTask(gen_rand_task());
+		int total_task = rand() % max_tasks + 1;
+		for (int task = 0; task < workers.size(); task++) {
+			if (workers[task].getEngaged()) {
+				max_tasks -= 1;
+			}
+			else {
+				workers[task].setTask(gen_rand_task());
+				max_tasks -= 1;
+			}
 		}
+		if (max_tasks == 0) {
+			std::cout << "Команда менеджера " << manager_name << " получила задание!" << std::endl;
+			return true;
+		}
+		return false;
 	}
 	std::string getMenegerName() {
 		return manager_name;
 	}
-};
+};//

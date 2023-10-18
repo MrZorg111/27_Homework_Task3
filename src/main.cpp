@@ -15,7 +15,10 @@ int main() {
 	boss->setTeam(team);
 	std::cout << "”важаемый директор, какие будут указани€? " << std::endl;
 	std::cin >> boss_command;
-	boss->setBossCommand(boss_command);
+	while (!boss->setBossCommand(boss_command)) {
+		std::cout << "¬ведите еще одно указание: " << std::endl;
+		boss->setBossCommand(boss_command);
+	};
 	
 	
 	delete boss;

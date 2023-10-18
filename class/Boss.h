@@ -8,12 +8,10 @@ class Boss {
 	std::string boss_name = "BigBoss";
 	Manager manager;
 	std::vector<Manager> managers;
-	int team;
-	int boss_command;
+	int num_team = 0;
 public:
 	void setTeam(int team) {
-		this->team = team;
-		for (int num_team = 0; num_team < this->team; num_team++) {
+		for (int num_team = 0; num_team < team; num_team++) {
 			manager.setID(num_team + 1);
 			manager.setManagerName();
 			managers.push_back(manager);
@@ -22,12 +20,12 @@ public:
 	void setNumWorkers(int num_workers) {
 		manager.setNumWorkers(num_workers);
 	}
-	void setBossCommand(int boss_command) {
-		this->boss_command = boss_command;
-		for (int manager_command = 0; manager_command < managers.size(); manager_command++) {
-			std::cout << "Команда менеджера " << managers[manager_command].getMenegerName() << "получила задание от босса!" << std::endl;
-			managers[manager_command].setBossCommand(this->boss_command);
+	bool setBossCommand(int boss_command) {
+		if (managers[num_team].setBossCommand(boss_command)) {
+			num_team += 1;
+			return true;
 		}
+		return false;
 	}
 
 };
