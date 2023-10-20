@@ -11,7 +11,6 @@ class Manager {
 	std::vector<Worker> workers;
 	std::string manager_name;
 	int id;
-	int num_workers; 
 	int max_tasks;
 public:
 	void setManagerName() {
@@ -21,9 +20,9 @@ public:
 		this->id = id;
 	}
 	void setNumWorkers(int num_workers) {
-		this->num_workers = num_workers;
 		this->max_tasks = num_workers;
-		for (int num_workers = 0; num_workers < this->num_workers; num_workers++) {
+		for (int num_w = 0; num_w < num_workers; num_w++) {
+			worker.setEngaged();
 			worker.setNameWorker();
 			workers.push_back(worker);
 		}
@@ -31,22 +30,22 @@ public:
 	bool setBossCommand(int boss_command) {
 		std::srand(boss_command + id);
 		int total_task = rand() % max_tasks + 1;
+		std::cout << "Total task rand " << total_task << std::endl;
 		for (int task = 0; task < workers.size(); task++) {
-			if (workers[task].getEngaged()) {
-				max_tasks -= 1;
+			if (total_task <= 0) {
+				return false;
 			}
-			else {
+			else if (!workers[task].getEngaged()) {
 				workers[task].setTask(gen_rand_task());
-				max_tasks -= 1;
+				total_task -= 1;
+				this->max_tasks -= 1;
 			}
 		}
-		if (max_tasks == 0) {
 			std::cout << "Команда менеджера " << manager_name << " получила задание!" << std::endl;
-			return true;
-		}
-		return false;
+		return true;
 	}
+	
 	std::string getMenegerName() {
 		return manager_name;
 	}
-};//
+};

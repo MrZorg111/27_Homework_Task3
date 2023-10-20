@@ -11,6 +11,9 @@ public:
 	void setNameWorker() {
 		worker_name = generation_names();
 	}
+	void setEngaged() {
+		this->engaged = false;
+	}
 	void setTask(char task) {
 		this->task = task;
 		engaged = true;

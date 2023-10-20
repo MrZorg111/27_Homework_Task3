@@ -27,5 +27,7 @@ public:
 		}
 		return false;
 	}
-
+	int getNumberManager() {
+		return managers.size();
+	}
 };
