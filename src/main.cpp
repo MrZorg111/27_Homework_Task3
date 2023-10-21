@@ -14,11 +14,13 @@ int main() {
 	std::cin >> team;
 	boss->setTeam(team);
 	for (int bos_c = 0; bos_c < boss->getNumberManager();) {
-		std::cout << "Уважаемый директор, какие будут указания? " << std::endl;
+		std::cout << "Введите команды для того чтобы менеджер " << boss->getManagerName(bos_c) << " распределил задачи работникам. " << std::endl;
 		std::cin >> boss_command;
-		if (boss->setBossCommand(boss_command)) {
-			bos_c++;
+		while (boss->setBossCommand(boss_command)) {
+			std::cin >> boss_command;
 		}
+		std::cout << "Команда менеджера " << boss->getManagerName(bos_c) << " получила задание!\n\n" << std::endl;
+		bos_c++;
 	}
 	
 	

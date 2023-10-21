@@ -30,7 +30,6 @@ public:
 	bool setBossCommand(int boss_command) {
 		std::srand(boss_command + id);
 		int total_task = rand() % max_tasks + 1;
-		std::cout << "Total task rand " << total_task << std::endl;
 		for (int task = 0; task < workers.size(); task++) {
 			if (total_task <= 0) {
 				return false;
@@ -41,11 +40,10 @@ public:
 				this->max_tasks -= 1;
 			}
 		}
-			std::cout << "Команда менеджера " << manager_name << " получила задание!" << std::endl;
 		return true;
 	}
 	
-	std::string getMenegerName() {
+	std::string getManagerName() {
 		return manager_name;
 	}
 };

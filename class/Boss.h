@@ -30,4 +30,7 @@ public:
 	int getNumberManager() {
 		return managers.size();
 	}
+	std::string getManagerName(int m_n) {
+		return managers[m_n].getManagerName();
+	}
 };
