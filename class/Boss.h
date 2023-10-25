@@ -8,29 +8,41 @@ class Boss {
 	std::string boss_name = "BigBoss";
 	Manager manager;
 	std::vector<Manager> managers;
-	int num_team = 0;
+	int num_team;
 public:
-	void setTeam(int team) {
-		for (int num_team = 0; num_team < team; num_team++) {
-			manager.setID(num_team + 1);
+	void setNumTeam(int team) {
+		this->num_team = team;
+	}
+	void setNumWorkers(int workers) {
+		manager.setNumWorkers(workers);
+	}
+	void setListsTeam() {
+		std::cout << "Ожидайте! Распределяем работников по командам!" << std::endl;
+		for (int lists_team = 0; lists_team < num_team; lists_team++) {
+			manager.setListsWorkers();
+			manager.setManagerName();
 			manager.setManagerName();
 			managers.push_back(manager);
+			manager.setClear();
 		}
 	}
-	void setNumWorkers(int num_workers) {
-		manager.setNumWorkers(num_workers);
-	}
-	bool setBossCommand(int boss_command) {
-		if (managers[num_team].setBossCommand(boss_command)) {
-			num_team += 1;
+	bool setBossCommand(int boss_command, int n) {
+		if (managers[n].setCheckBossCommand(boss_command)) {
+			std::cout << "Команда менеджера " << managers[n].getManagerName() << " полностью укомплектована работой!" << std::endl;
 			return true;
 		}
 		return false;
 	}
-	int getNumberManager() {
-		return managers.size();
+		
+	//________________________________________________________//
+	
+	std::string getNameBoss() {
+		return boss_name;
 	}
-	std::string getManagerName(int m_n) {
-		return managers[m_n].getManagerName();
+	void getListsTeam() {
+		for (int t = 0; t < num_team; t++) {
+			managers[t].getNameWorkerAndTask();
+			std::cout << "\n\n";
+		}
 	}
 };

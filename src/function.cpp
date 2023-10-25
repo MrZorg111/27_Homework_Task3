@@ -5,16 +5,18 @@
 #include <vector>
 #include "function.h"
 
+//Опять таки, для повышения уровня рандомности утсановленны задержки
 
 char gen_rand_task() {
     std::srand(time(nullptr));
-
-    switch (rand() % 3 + 1) {
-    case 1:
+    std::time_t t = std::time(nullptr);
+    while (std::time(nullptr) < t + 1) {};
+    switch (rand() % 3) {
+    case 0:
         return 'A';
-    case 2:
+    case 1:
         return 'B';
-    case 3:
+    case 2:
         return 'C';
     default:
         std::cout << "Неверный ввод!" << std::endl;

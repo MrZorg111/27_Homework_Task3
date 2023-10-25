@@ -11,39 +11,54 @@ class Manager {
 	std::vector<Worker> workers;
 	std::string manager_name;
 	int id;
-	int max_tasks;
+	int num_workers;
 public:
+	void setNumWorkers(int workers) {
+		this->num_workers = workers;
+	}
 	void setManagerName() {
 		this->manager_name = generation_names();
 	}
 	void setID(int id) {
 		this->id = id;
 	}
-	void setNumWorkers(int num_workers) {
-		this->max_tasks = num_workers;
-		for (int num_w = 0; num_w < num_workers; num_w++) {
-			worker.setEngaged();
+	void setListsWorkers() {
+		for (int lists_workers = 0; lists_workers < num_workers; lists_workers++) {
 			worker.setNameWorker();
 			workers.push_back(worker);
+
 		}
 	}
-	bool setBossCommand(int boss_command) {
+	void setClear() {
+		workers.clear();
+	}
+	bool setCheckBossCommand(int boss_command) {
 		std::srand(boss_command + id);
-		int total_task = rand() % max_tasks + 1;
-		for (int task = 0; task < workers.size(); task++) {
-			if (total_task <= 0) {
-				return false;
+		int total_task = rand() % num_workers + 1;
+		if (total_task == num_workers) {
+			std::cout << "Ожидайте, идет распределение заданий! " << std::endl;
+			for (int w_t = 0; w_t < workers.size(); w_t++) {
+				workers[w_t].setTask(gen_rand_task());
 			}
-			else if (!workers[task].getEngaged()) {
-				workers[task].setTask(gen_rand_task());
-				total_task -= 1;
-				this->max_tasks -= 1;
-			}
+			return true;
 		}
-		return true;
+		else if (total_task < num_workers) {
+			num_workers -= total_task;
+			return false;
+		}
+		return false; //Чтобы не выдавал предупреждения
 	}
-	
+
+	//_______________________________________________________________________//
+
 	std::string getManagerName() {
 		return manager_name;
 	}
+	void getNameWorkerAndTask() {
+		std::cout << "Список команды менеджера " << manager_name << ": " << std::endl;
+		for (int i = 0; i < workers.size(); i++) {
+			std::cout << "\t--Работник " << workers[i].getNameWorker() << " выполняет задачу " << workers[i].getTask() << std::endl;
+		}
+	}
+	
 };
