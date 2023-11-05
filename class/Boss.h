@@ -28,7 +28,7 @@ public:
 	}
 	bool setBossCommand(int boss_command, int n) {
 		if (managers[n].setCheckBossCommand(boss_command)) {
-			std::cout << "Команда менеджера " << managers[n].getManagerName() << " полностью укомплектована работой!" << std::endl;
+			std::cout << "\n----Команда менеджера " << managers[n].getManagerName() << " полностью укомплектована работой!----\n\n" << std::endl;
 			return true;
 		}
 		return false;
