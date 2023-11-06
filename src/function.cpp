@@ -5,7 +5,7 @@
 #include <vector>
 #include "function.h"
 
-//Опять таки, для повышения уровня рандомности утсановленны задержки
+//Again, delays are set to increase the level of randomness
 
 char gen_rand_task() {
     std::srand(time(nullptr));
@@ -19,8 +19,9 @@ char gen_rand_task() {
     case 2:
         return 'C';
     default:
-        std::cout << "Неверный ввод!" << std::endl;
+        std::cout << "Incorrect input!" << std::endl;
     }
+    return 0; //So as not to give out an error
 }
 
 std::string generation_names() {

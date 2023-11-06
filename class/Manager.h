@@ -36,7 +36,7 @@ public:
 		std::srand(boss_command + id);
 		int total_task = rand() % num_workers + 1;
 		if (total_task == num_workers) {
-			std::cout << "Ожидайте, идет распределение заданий! " << std::endl;
+			std::cout << "Expect, there is a distribution of tasks! " << std::endl;
 			for (int w_t = 0; w_t < workers.size(); w_t++) {
 				workers[w_t].setTask(gen_rand_task());
 			}
@@ -46,7 +46,7 @@ public:
 			num_workers -= total_task;
 			return false;
 		}
-		return false; //Чтобы не выдавал предупреждения
+		return false; //So that it does not issue warnings
 	}
 
 	//_______________________________________________________________________//
@@ -55,9 +55,9 @@ public:
 		return manager_name;
 	}
 	void getNameWorkerAndTask() {
-		std::cout << "Список команды менеджера " << manager_name << ": " << std::endl;
+		std::cout << "Manager's Team list " << manager_name << ": " << std::endl;
 		for (int i = 0; i < workers.size(); i++) {
-			std::cout << "\t--Работник " << workers[i].getNameWorker() << " выполняет задачу " << workers[i].getTask() << std::endl;
+			std::cout << "\t--Worker " << workers[i].getNameWorker() << " performs the task " << workers[i].getTask() << std::endl;
 		}
 	}
 	

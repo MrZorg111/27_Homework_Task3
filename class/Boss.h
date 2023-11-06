@@ -17,7 +17,7 @@ public:
 		manager.setNumWorkers(workers);
 	}
 	void setListsTeam() {
-		std::cout << "Ожидайте! Распределяем работников по командам!" << std::endl;
+		std::cout << "Expect it! We distribute employees into teams!" << std::endl;
 		for (int lists_team = 0; lists_team < num_team; lists_team++) {
 			manager.setListsWorkers();
 			manager.setManagerName();
@@ -28,7 +28,7 @@ public:
 	}
 	bool setBossCommand(int boss_command, int n) {
 		if (managers[n].setCheckBossCommand(boss_command)) {
-			std::cout << "\n----Команда менеджера " << managers[n].getManagerName() << " полностью укомплектована работой!----\n\n" << std::endl;
+			std::cout << "\n----Manager's team " << managers[n].getManagerName() << " fully equipped with work!----\n\n" << std::endl;
 			return true;
 		}
 		return false;
